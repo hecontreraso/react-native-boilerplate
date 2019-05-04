@@ -2,10 +2,12 @@ import { createStore, combineReducers } from "redux";
 
 import questionsReducer from "./questions";
 
-const root = combineReducers({
+const rootReducer = combineReducers({
   questionsReducer
 });
 
-const store = createStore(root);
+const store = createStore(rootReducer);
+
+export type AppState = ReturnType<typeof rootReducer>;
 
 export default store;

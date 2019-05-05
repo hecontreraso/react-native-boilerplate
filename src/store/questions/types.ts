@@ -21,6 +21,7 @@ export interface Question {
 
 export interface QuestionsState {
   questions: Question[];
+  isLoadingData: boolean;
 }
 
 interface fetchQuestionsAction {

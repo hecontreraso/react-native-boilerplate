@@ -1,11 +1,18 @@
 import React from "react";
 import { connect } from "react-redux";
 import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
+import { Question } from "store/questions/types";
+import { fetchQuestions } from "store/questions/actions";
 
-class Quiz extends React.Component {
+interface Props {
+  questions: Question[];
+  fetchQuestions: any;
+}
+class Quiz extends React.Component<Props> {
   componentDidMount() {
-    // const result = this.props.fetchQuestions();
-    // console.log("result", result);
+    const result = this.props.fetchQuestions();
+    console.log("result", result);
+    // console.log("result", this.props.questions);
   }
 
   render() {
@@ -27,12 +34,13 @@ class Quiz extends React.Component {
   }
 }
 
-// export default Quiz;
-
-// const mapStateToProps = ({ questions }: { questions: Question[] }) => ({
-//   questions
-// });
-export default connect()(Quiz);
+const mapStateToProps = ({ questions }: Props) => ({
+  questions
+});
+export default connect(
+  mapStateToProps,
+  { fetchQuestions }
+)(Quiz);
 
 const styles = StyleSheet.create({
   container: {

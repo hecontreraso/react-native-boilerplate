@@ -1,13 +1,13 @@
 import { SET_ARTICLE_DETAILS, API, FETCH_ARTICLE_DETAILS } from "./types";
 
-export function fetchArticleDetails() {
-  return apiAction({
-    url: "https://api.myjson.com/bins/19dtxc",
-    onSuccess: setArticleDetails,
-    onFailure: () => console.log("Error occured loading articles"),
-    label: FETCH_ARTICLE_DETAILS
-  });
-}
+// export function fetchArticleDetails() {
+//   return apiAction({
+//     url: "https://api.myjson.com/bins/19dtxc",
+//     onSuccess: setArticleDetails,
+//     onFailure: () => console.log("Error occured loading articles"),
+//     label: FETCH_ARTICLE_DETAILS
+//   });
+// }
 
 function setArticleDetails(data) {
   return {

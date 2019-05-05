@@ -3,7 +3,12 @@ import { apiAction } from "middleware/actions";
 
 export const fetchQuestions = () =>
   apiAction({
-    url: "https://api.myjson.com/bins/19dtxc",
+    path: "/api.php",
+    data: {
+      amount: "10",
+      difficulty: "hard",
+      type: "boolean"
+    },
     onSuccess: setQuestions,
     onFailure: () => console.log("Error occured loading articles"),
     label: FETCH_QUESTIONS

@@ -18,7 +18,8 @@
       "components": ["components"],
       "screens": ["screens"],
       "httpApi": ["httpApi"],
-      "store": ["store"]
+      "store": ["store"],
+      "middleware": ["middleware"]
     }
   },
   "exclude": ["node_modules"]

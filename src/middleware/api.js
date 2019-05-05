@@ -2,14 +2,13 @@ import axios from "axios";
 import { apiStart, apiEnd, apiError, apiFailure } from "./actions";
 import { API } from "./types";
 
-const OPEN_TRIVIA_BASE_URL = "https://opentdb.com";
-
 const apiMiddleware = ({ dispatch }) => next => action => {
   next(action);
 
   if (action.type !== API) return;
 
   const {
+    url,
     path,
     method,
     data,
@@ -27,7 +26,7 @@ const apiMiddleware = ({ dispatch }) => next => action => {
   if (label) dispatch(apiStart(label));
   axios
     .request({
-      url: `${OPEN_TRIVIA_BASE_URL}${path}`,
+      url: `${url}${path}`,
       method,
       headers,
       [dataOrParams]: data

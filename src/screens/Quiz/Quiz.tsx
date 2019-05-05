@@ -11,11 +11,10 @@ interface Props {
 class Quiz extends React.Component<Props> {
   componentDidMount() {
     const result = this.props.fetchQuestions();
-    console.log("result", result);
-    // console.log("result", this.props.questions);
   }
 
   render() {
+    console.log("questions in store", this.props.questions);
     return (
       <View style={styles.container}>
         <Text>Entertainment: Video Games</Text>
@@ -38,7 +37,10 @@ const mapStateToProps = ({ questions }: Props) => ({
   questions
 });
 export default connect(
-  mapStateToProps,
+  state => {
+    console.log("state", state);
+    return { questions: state.questions.data };
+  },
   { fetchQuestions }
 )(Quiz);
 

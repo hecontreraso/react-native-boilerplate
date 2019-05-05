@@ -15,6 +15,15 @@ export const apiError = (error: Object) => ({
   error
 });
 
+interface ApiActionParams {
+  path: string;
+  method?: "GET" | "POST";
+  data?: object | null;
+  onSuccess: Function;
+  onFailure: Function;
+  label: string;
+  headers?: object | null;
+}
 export const apiAction = ({
   path = "",
   method = "GET",
@@ -23,15 +32,7 @@ export const apiAction = ({
   onFailure = () => {},
   label = "",
   headers = null
-}: {
-  path: string;
-  method: "GET" | "POST";
-  data: object | null;
-  onSuccess: Function;
-  onFailure: Function;
-  label: string;
-  headers: object | null;
-}) => ({
+}: ApiActionParams) => ({
   type: API,
   payload: {
     path,

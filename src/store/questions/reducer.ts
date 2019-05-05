@@ -1,28 +1,28 @@
-import {
-  FETCH_QUESTIONS,
-  SET_QUESTIONS,
-  QuestionsState,
-  QuestionsActionTypes
-} from "./types";
-import { API_START, API_END } from "middleware/types";
+import { FETCH_QUESTIONS, SET_QUESTIONS, QuestionsActionTypes } from "./types";
+import { API_START, API_END, ApiActionTypes } from "middleware/types";
 
-const initialState: QuestionsState = {
+const initialState: any = {
   questions: [],
   isLoadingData: false
 };
 
-const reducer = (state = initialState, action: QuestionsActionTypes) => {
-  console.log("action2 => ", action);
-  switch (action.type) {
+const reducer = (
+  state = initialState,
+  // action: QuestionsActionTypes | ApiActionTypes
+  action: any
+) => {
+  const { type, payload } = action;
+
+  switch (type) {
     case SET_QUESTIONS:
-      return { data: action.payload };
+      return { data: payload.questions };
     case API_START:
-      if (action.payload === FETCH_QUESTIONS) {
+      if (payload === FETCH_QUESTIONS) {
         return { ...state, isLoadingData: true };
       }
       break;
     case API_END:
-      if (action.payload === FETCH_QUESTIONS) {
+      if (payload === FETCH_QUESTIONS) {
         return { ...state, isLoadingData: false };
       }
       break;

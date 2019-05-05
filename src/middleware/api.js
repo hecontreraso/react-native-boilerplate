@@ -26,6 +26,12 @@ const apiMiddleware = ({ dispatch }) => next => action => {
 
   if (label) dispatch(apiStart(label));
 
+  console.log("OME", {
+    url: path,
+    method,
+    headers,
+    [dataOrParams]: data
+  });
   axios
     .request({
       url: path,

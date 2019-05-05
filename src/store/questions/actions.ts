@@ -3,7 +3,6 @@ import { apiAction } from "middleware/actions";
 
 export const fetchQuestions = () =>
   apiAction({
-    url: "",
     path: "/api.php",
     data: {
       amount: "10",

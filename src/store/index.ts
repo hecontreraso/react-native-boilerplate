@@ -1,4 +1,4 @@
-import { applyMiddleware, createStore, combineReducers } from "redux";
+import { applyMiddleware, createStore, combineReducers, compose } from "redux";
 
 // TODO: try to type api middleware
 //@ts-ignore
@@ -6,10 +6,14 @@ import apiMiddleware from "../middleware/api";
 import questionsReducer from "./questions";
 
 const rootReducer = combineReducers({
-  questionsReducer
+  questions: questionsReducer
 });
 
-const store = createStore(rootReducer, applyMiddleware(apiMiddleware));
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(
+  rootReducer,
+  /* preloadedState, */ composeEnhancers(applyMiddleware(apiMiddleware))
+);
 
 export type AppState = ReturnType<typeof rootReducer>;
 

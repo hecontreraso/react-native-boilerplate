@@ -1,19 +1,10 @@
 export const FETCH_QUESTIONS = "FETCH_QUESTIONS";
 export const SET_QUESTIONS = "SET_QUESTIONS";
 
-enum Type {
-  boolean,
-  multiple
-}
-enum Difficulty {
-  easy,
-  medium,
-  hard
-}
 export interface Question {
   category: string;
-  type: Type;
-  difficult: Difficulty;
+  type: "boolean" | "multiple";
+  difficult: "easy" | "medium" | "hard";
   question: string;
   correct_answer: string;
   incorrect_answers: string[];

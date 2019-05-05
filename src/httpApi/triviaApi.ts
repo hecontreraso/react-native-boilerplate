@@ -1,18 +1,42 @@
-import axios from "axios";
+import { SET_ARTICLE_DETAILS, API, FETCH_ARTICLE_DETAILS } from "./types";
 
-const OPEN_TRIVIA_URL = "https://opentdb.com";
-
-class triviaApi {
-  async fetchRandomQuestions(params: Object) {
-    try {
-      const response = await axios.get(`api.php`, { params });
-      console.log(response);
-      // TODO: PUT REDUX ERROR HERE
-    } catch (error) {
-      // TODO: put sentry here
-      console.error(error);
-    }
-  }
+export function fetchArticleDetails() {
+  return apiAction({
+    url: "https://api.myjson.com/bins/19dtxc",
+    onSuccess: setArticleDetails,
+    onFailure: () => console.log("Error occured loading articles"),
+    label: FETCH_ARTICLE_DETAILS
+  });
 }
 
-export default triviaApi;
+function setArticleDetails(data) {
+  return {
+    type: SET_ARTICLE_DETAILS,
+    payload: data
+  };
+}
+
+function apiAction({
+  url = "",
+  method = "GET",
+  data = null,
+  accessToken = null,
+  onSuccess = () => {},
+  onFailure = () => {},
+  label = "",
+  headersOverride = null
+}) {
+  return {
+    type: API,
+    payload: {
+      url,
+      method,
+      data,
+      accessToken,
+      onSuccess,
+      onFailure,
+      label,
+      headersOverride
+    }
+  };
+}

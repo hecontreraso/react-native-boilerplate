@@ -1,12 +1,16 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
-const Home = () => (
+interface Props {}
+const Home = (props: Props) => (
   <View style={styles.container}>
     <Text>Welcome to the Trivia Challenge!</Text>
     <Text>You will be presented with 10 True or False questions.</Text>
     <Text>Can you score 100%?</Text>
-    <TouchableOpacity style={styles.button}>
+    <TouchableOpacity
+      style={styles.button}
+      onPress={() => props.navigation.navigate("Quiz")}
+    >
       <Text>BEGIN</Text>
     </TouchableOpacity>
   </View>

@@ -16,7 +16,8 @@
     "paths": {
       "navigators": ["navigators"],
       "components": ["components"],
-      "screens": ["screens"]
+      "screens": ["screens"],
+      "httpApi": ["httpApi"]
     }
   },
   "exclude": ["node_modules"]

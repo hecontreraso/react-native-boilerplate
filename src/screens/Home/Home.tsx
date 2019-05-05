@@ -1,7 +1,10 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { NavigationState, NavigationScreenProp } from "react-navigation";
 
-interface Props {}
+interface Props {
+  navigation: NavigationScreenProp<NavigationState>;
+}
 const Home = (props: Props) => (
   <View style={styles.container}>
     <Text>Welcome to the Trivia Challenge!</Text>

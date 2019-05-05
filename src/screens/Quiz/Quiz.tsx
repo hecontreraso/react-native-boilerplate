@@ -1,11 +1,10 @@
 import React from "react";
+import { connect } from "react-redux";
 import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
-
-// import triviaApi from "httpApi/triviaApi";
 
 class Quiz extends React.Component {
   componentDidMount() {
-    // const result = triviaApi.fetchRandomQuestions();
+    // const result = this.props.fetchQuestions();
     // console.log("result", result);
   }
 
@@ -28,7 +27,12 @@ class Quiz extends React.Component {
   }
 }
 
-export default Quiz;
+// export default Quiz;
+
+// const mapStateToProps = ({ questions }: { questions: Question[] }) => ({
+//   questions
+// });
+export default connect()(Quiz);
 
 const styles = StyleSheet.create({
   container: {

@@ -1,17 +1,15 @@
-import { Question } from "./types";
-import {
-  UPDATE_QUESTIONS__FAILURE,
-  UPDATE_QUESTIONS__START,
-  UPDATE_QUESTIONS__SUCCESS
-} from "./types";
+import { Question, FETCH_QUESTIONS, SET_QUESTIONS } from "./types";
+import { apiAction } from "middleware/actions";
 
-export const updateQuestionsStart = () => ({
-  type: UPDATE_QUESTIONS__START
-});
-export const updateQuestionsSuccess = (questions: Question[]) => ({
-  type: UPDATE_QUESTIONS__SUCCESS,
+export const fetchQuestions = () =>
+  apiAction({
+    url: "https://api.myjson.com/bins/19dtxc",
+    onSuccess: setQuestions,
+    onFailure: () => console.log("Error occured loading articles"),
+    label: FETCH_QUESTIONS
+  });
+
+const setQuestions = (questions: Question[]) => ({
+  type: SET_QUESTIONS,
   payload: { questions }
-});
-export const updateQuestionsFailure = () => ({
-  type: UPDATE_QUESTIONS__FAILURE
 });

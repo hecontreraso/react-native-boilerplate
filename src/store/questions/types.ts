@@ -1,6 +1,5 @@
-export const UPDATE_QUESTIONS__START = "UPDATE_QUESTIONS__START";
-export const UPDATE_QUESTIONS__SUCCESS = "UPDATE_QUESTIONS__SUCCESS";
-export const UPDATE_QUESTIONS__FAILURE = "UPDATE_QUESTIONS__FAILURE";
+export const FETCH_QUESTIONS = "FETCH_QUESTIONS";
+export const SET_QUESTIONS = "SET_QUESTIONS";
 
 enum Type {
   boolean,
@@ -22,27 +21,18 @@ export interface Question {
 
 export interface QuestionsState {
   questions: Question[];
-  searchFailure: boolean;
 }
 
-interface updateQuestionsStartAction {
-  type: typeof UPDATE_QUESTIONS__START;
+interface fetchQuestionsAction {
+  type: typeof FETCH_QUESTIONS;
   payload: never;
 }
 
-interface UpdateQuestionsSuccessAction {
-  type: typeof UPDATE_QUESTIONS__SUCCESS;
+interface setQuestionsAction {
+  type: typeof SET_QUESTIONS;
   payload: {
     questions: Question[];
   };
 }
 
-interface updateQuestionFailureAction {
-  type: typeof UPDATE_QUESTIONS__FAILURE;
-  payload: never;
-}
-
-export type QuestionsActionTypes =
-  | updateQuestionsStartAction
-  | UpdateQuestionsSuccessAction
-  | updateQuestionFailureAction;
+export type QuestionsActionTypes = fetchQuestionsAction | setQuestionsAction;

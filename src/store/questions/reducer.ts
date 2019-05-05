@@ -1,31 +1,21 @@
-import { Question, QuestionsState, QuestionsActionTypes } from "./types";
-
 import {
-  UPDATE_QUESTIONS__FAILURE,
-  UPDATE_QUESTIONS__START,
-  UPDATE_QUESTIONS__SUCCESS
+  FETCH_QUESTIONS,
+  SET_QUESTIONS,
+  QuestionsState,
+  QuestionsActionTypes
 } from "./types";
 
 const initialState: QuestionsState = {
-  questions: [],
-  searchFailure: false
+  questions: []
 };
 
-const reducer = (
-  state = initialState,
-  action: QuestionsActionTypes
-): QuestionsState => {
-  const { type } = action;
-
-  switch (type) {
-    case UPDATE_QUESTIONS__START:
-      return { ...state, searchFailure: false };
-
-    case UPDATE_QUESTIONS__SUCCESS:
+const reducer = (state = initialState, action: QuestionsActionTypes) => {
+  console.log("action type => ", action.type);
+  switch (action.type) {
+    case FETCH_QUESTIONS:
+      return { ...state, isLoadingData: true };
+    case SET_QUESTIONS:
       return { ...state, questions: action.payload.questions };
-
-    case UPDATE_QUESTIONS__FAILURE:
-      return { ...state, searchFailure: true };
     default:
       return state;
   }

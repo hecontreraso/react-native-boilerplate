@@ -1,10 +1,5 @@
 import axios from "axios";
-import { Action, Dispatch, Middleware, MiddlewareAPI } from "redux";
-import { ThunkAction } from "redux-thunk";
-
 import { API } from "./types";
-import { AppState } from "../store";
-import { apiError, apiStart, apiEnd } from "./actions";
 
 const OPEN_TRIVIA_BASE_URL = "https://opentdb.com";
 

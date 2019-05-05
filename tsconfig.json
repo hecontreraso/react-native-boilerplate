@@ -17,7 +17,8 @@
       "navigators": ["navigators"],
       "components": ["components"],
       "screens": ["screens"],
-      "httpApi": ["httpApi"]
+      "httpApi": ["httpApi"],
+      "store": ["store"]
     }
   },
   "exclude": ["node_modules"]
